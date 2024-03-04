@@ -1,6 +1,11 @@
 interface Data {
   conversion_rates: Record<string, number>;
 }
+interface ImportMeta {
+  env: {
+    VITE_API_KEY: string;
+  };
+}
 
 class FetchWrapper {
   baseURL: string;
@@ -54,7 +59,7 @@ const resultElement = document.querySelector(
 // A global variable that stores the conversion rates for each currency pair as an array of arrays
 let conversionArray: [string, number][] = [];
 // An instance of the FetchWrapper class with the base URL of the API
-const apiKey: string = 'cf1663950328116a586778fa';
+const apiKey: string = import.meta.env.VITE_API_KEY;
 const baseUrlApi = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/`;
 // A constant that stores the API key for authentication
 
